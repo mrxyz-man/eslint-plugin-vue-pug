@@ -15,9 +15,9 @@
     "lint:fix": "eslint . --fix",
     "update": "node ./tools/update.js"
   },
-  "author": "rash <rash@rash.codes> (https://rash.codes)",
-  "homepage": "https://github.com/rashfael/eslint-plugin-vue-pug",
-  "repository": "github:rashfael/eslint-plugin-vue-pug",
+  "author": "mrxyz",
+  "homepage": "https://github.com/mrxyz-man/eslint-plugin-vue-pug",
+  "repository": "github:mrxyz-man/eslint-plugin-vue-pug",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/parser": "^5.16.0",
