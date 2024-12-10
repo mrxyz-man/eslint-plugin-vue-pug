@@ -54,6 +54,29 @@ tester.run('html-quotes', rule, {
       filename: 'test.vue',
       code: '<template><div :class="`${active ? \'active\' : \'\'}`"></div></template>',
       options: ['double', { ignoreBackticks: true }]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+        <template>
+          <server-data
+            ref="list"
+            v-model="items"
+            :method="method"
+            :serialize-data="serializeData"
+            v-slot=\`{
+              query,
+              hasMore,
+              loading,
+              queryList,
+              pagination,
+              isInitialized,
+              loadMoreItems,
+            }\`
+          ></server-data>
+        </template>
+      `,
+      options: ['double', { ignoreBackticks: true }]
     }
   ],
   invalid: [
@@ -86,6 +109,48 @@ tester.run('html-quotes', rule, {
       filename: 'test.vue',
       code: '<template><div :class="`active`"></div></template>',
       output: '<template><div :class="active"></div></template>',
+      errors: ['Expected to be enclosed by double quotes.']
+    },
+    {
+      filename: 'test.vue',
+      code: `
+        <template>
+          <server-data
+            ref="list"
+            v-model="items"
+            :method="method"
+            :serialize-data="serializeData"
+            v-slot=\`{
+              query,
+              hasMore,
+              loading,
+              queryList,
+              pagination,
+              isInitialized,
+              loadMoreItems,
+            }\`
+          ></server-data>
+        </template>
+      `,
+      output: `
+        <template>
+          <server-data
+            ref="list"
+            v-model="items"
+            :method="method"
+            :serialize-data="serializeData"
+            v-slot="{
+              query,
+              hasMore,
+              loading,
+              queryList,
+              pagination,
+              isInitialized,
+              loadMoreItems,
+            }"
+          ></server-data>
+        </template>
+      `,
       errors: ['Expected to be enclosed by double quotes.']
     }
   ]
