@@ -47,7 +47,7 @@ function formatRules(rules, categoryId) {
   const obj = {
     ...disabledRules,
     ...rules
-      .filter((rule) => rule.ruleId.startsWith('vue-pug/'))
+      .filter((rule) => rule.ruleId.startsWith('vue-pug-more/'))
       .reduce((setting, rule) => {
         let options = errorCategories.includes(categoryId) ? 'error' : 'warn'
         const defaultOptions =
@@ -86,7 +86,7 @@ module.exports = {
     es6: true
   },
   plugins: [
-    'vue-pug'
+    'vue-pug-more'
   ],
   rules: ${formatRules(category.rules, category.categoryId)}
 }

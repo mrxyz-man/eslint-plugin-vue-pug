@@ -1,12 +1,16 @@
 ---
 pageClass: rule-details
 sidebarDepth: 0
-title: vue/pug-indent
-description: enforce consistent indentation in <template lang="pug">.
+title: vue-pug-more/pug-indent
+description: enforce consistent indentation in <template lang="pug">
 ---
-# vue/pug-indent
+# vue-pug-more/pug-indent
 
-> This rule enforces a consistent indentation style in `<template lang="pug">`. The default style is 2 spaces.
+> enforce consistent indentation in <template lang="pug">
+
+- :exclamation: <badge text="This rule has not been released yet." vertical="middle" type="error"> ***This rule has not been released yet.*** </badge>
+- :gear: This rule is included in all of `"plugin:vue/vue3-strongly-recommended"`, `"plugin:vue/strongly-recommended"`, `"plugin:vue/vue3-recommended"` and `"plugin:vue/recommended"`.
+- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
 
 ## :book: Rule Details
 
@@ -52,3 +56,8 @@ description: enforce consistent indentation in <template lang="pug">.
     "ignores": []
   }]
 }
+
+## :mag: Implementation
+
+- [Rule source](https://github.com/rashfael/eslint-plugin-vue-pug/blob/main/lib/rules/pug-indent.js)
+- [Test source](https://github.com/rashfael/eslint-plugin-vue-pug/blob/main/tests/lib/rules/pug-indent.js)

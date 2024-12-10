@@ -35,7 +35,7 @@ const ownRules = fs
       meta.docs.categories = [meta.docs.category]
     }
     return {
-      ruleId: `vue-pug/${name}`,
+      ruleId: `vue-pug-more/${name}`,
       name,
       meta
     }

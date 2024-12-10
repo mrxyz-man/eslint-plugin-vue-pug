@@ -204,7 +204,7 @@ class DocFile {
       this.since
         ? `## :rocket: Version
 
-This rule was introduced in eslint-plugin-vue-pug ${this.since}
+This rule was introduced in eslint-plugin-vue-pug-more ${this.since}
 
 `
         : ''
@@ -266,7 +266,7 @@ ${
 }
 
 for (const rule of rules) {
-  if (!rule.ruleId.startsWith('vue-pug/') || rule.meta.docs.dropIn) continue
+  if (!rule.ruleId.startsWith('vue-pug-more/') || rule.meta.docs.dropIn) continue
   DocFile.read(rule)
     .updateHeader()
     .updateFooter()

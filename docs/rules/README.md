@@ -81,6 +81,7 @@ Enforce all the rules in this category, as well as all higher priority rules, wi
 | 💤 | [vue/no-expose-after-await](https://eslint.vuejs.org/rules/no-expose-after-await.html) | disallow asynchronously registered `expose` |  |
 | 💤 | [vue/no-lifecycle-after-await](https://eslint.vuejs.org/rules/no-lifecycle-after-await.html) | disallow asynchronously registered lifecycle hooks |  |
 | 🎁 | [vue/no-mutating-props](https://eslint.vuejs.org/rules/no-mutating-props.html) | disallow mutation of component props |  |
+| 🚧 | [vue/no-parsing-error](https://eslint.vuejs.org/rules/no-parsing-error.html) | disallow parsing errors in `<template>` |  |
 | 💤 | [vue/no-ref-as-operand](https://eslint.vuejs.org/rules/no-ref-as-operand.html) | disallow use of value wrapped by `ref()` (Composition API) as an operand | :wrench: |
 | 🎁 | [vue/no-reserved-component-names](https://eslint.vuejs.org/rules/no-reserved-component-names.html) | disallow the use of reserved names in component definitions |  |
 | 🎁 | [vue/no-reserved-keys](https://eslint.vuejs.org/rules/no-reserved-keys.html) | disallow overwriting reserved keys |  |
@@ -130,7 +131,6 @@ Enforce all the rules in this category, as well as all higher priority rules, wi
 | 🎁 | [vue/valid-v-show](https://eslint.vuejs.org/rules/valid-v-show.html) | enforce valid `v-show` directives |  |
 | 🎁 | [vue/valid-v-slot](https://eslint.vuejs.org/rules/valid-v-slot.html) | enforce valid `v-slot` directives |  |
 | 🎁 | [vue/valid-v-text](https://eslint.vuejs.org/rules/valid-v-text.html) | enforce valid `v-text` directives |  |
-| 🤝 | [vue-pug/no-parsing-error](./no-parsing-error.md) | disallow parsing errors in `<template lang="pug">` |  |
 
 ## Priority B: Strongly Recommended (Improving Readability) <badge text="for Vue.js 3.x" vertical="middle">for Vue.js 3.x</badge>
 
@@ -169,7 +169,8 @@ Enforce all the rules in this category, as well as all higher priority rules, wi
 | 🎁 | [vue/v-on-event-hyphenation](https://eslint.vuejs.org/rules/v-on-event-hyphenation.html) | enforce v-on event naming style on custom components in template | :wrench: |
 | 🎁 | [vue/v-on-style](https://eslint.vuejs.org/rules/v-on-style.html) | enforce `v-on` directive style | :wrench: |
 | 🎁 | [vue/v-slot-style](https://eslint.vuejs.org/rules/v-slot-style.html) | enforce `v-slot` directive style | :wrench: |
-| 🐶 | [vue-pug/no-pug-control-flow](./no-pug-control-flow.md) | disallow pug control flow features. |  |
+| 🎁 | [vue-pug-more/html-quotes-pug](https://eslint.vuejs.org/rules/html-quotes-pug.html) | enforce quotes style of HTML attributes | :wrench: |
+| 🎁 | [vue-pug-more/pug-indent](https://eslint.vuejs.org/rules/pug-indent.html) | enforce consistent indentation in <template lang="pug"> | :wrench: |
 
 ## Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead) <badge text="for Vue.js 3.x" vertical="middle">for Vue.js 3.x</badge>
 
@@ -215,6 +216,7 @@ Enforce all the rules in this category, as well as all higher priority rules, wi
 | 💤 | [vue/no-export-in-script-setup](https://eslint.vuejs.org/rules/no-export-in-script-setup.html) | disallow `export` in `<script setup>` |  |
 | 🎁 | [vue/no-multiple-template-root](https://eslint.vuejs.org/rules/no-multiple-template-root.html) | disallow adding multiple root nodes to the template |  |
 | 🎁 | [vue/no-mutating-props](https://eslint.vuejs.org/rules/no-mutating-props.html) | disallow mutation of component props |  |
+| 🚧 | [vue/no-parsing-error](https://eslint.vuejs.org/rules/no-parsing-error.html) | disallow parsing errors in `<template>` |  |
 | 💤 | [vue/no-ref-as-operand](https://eslint.vuejs.org/rules/no-ref-as-operand.html) | disallow use of value wrapped by `ref()` (Composition API) as an operand | :wrench: |
 | 🎁 | [vue/no-reserved-component-names](https://eslint.vuejs.org/rules/no-reserved-component-names.html) | disallow the use of reserved names in component definitions |  |
 | 🎁 | [vue/no-reserved-keys](https://eslint.vuejs.org/rules/no-reserved-keys.html) | disallow overwriting reserved keys |  |
@@ -261,7 +263,6 @@ Enforce all the rules in this category, as well as all higher priority rules, wi
 | 🎁 | [vue/valid-v-show](https://eslint.vuejs.org/rules/valid-v-show.html) | enforce valid `v-show` directives |  |
 | 🎁 | [vue/valid-v-slot](https://eslint.vuejs.org/rules/valid-v-slot.html) | enforce valid `v-slot` directives |  |
 | 🎁 | [vue/valid-v-text](https://eslint.vuejs.org/rules/valid-v-text.html) | enforce valid `v-text` directives |  |
-| 🤝 | [vue-pug/no-parsing-error](./no-parsing-error.md) | disallow parsing errors in `<template lang="pug">` |  |
 
 ## Priority B: Strongly Recommended (Improving Readability) <badge text="for Vue.js 2.x" vertical="middle" type="warn">for Vue.js 2.x</badge>
 
@@ -298,7 +299,8 @@ Enforce all the rules in this category, as well as all higher priority rules, wi
 | 🎁 | [vue/v-bind-style](https://eslint.vuejs.org/rules/v-bind-style.html) | enforce `v-bind` directive style | :wrench: |
 | 🎁 | [vue/v-on-style](https://eslint.vuejs.org/rules/v-on-style.html) | enforce `v-on` directive style | :wrench: |
 | 🎁 | [vue/v-slot-style](https://eslint.vuejs.org/rules/v-slot-style.html) | enforce `v-slot` directive style | :wrench: |
-| 🐶 | [vue-pug/no-pug-control-flow](./no-pug-control-flow.md) | disallow pug control flow features. |  |
+| 🎁 | [vue-pug-more/html-quotes-pug](https://eslint.vuejs.org/rules/html-quotes-pug.html) | enforce quotes style of HTML attributes | :wrench: |
+| 🎁 | [vue-pug-more/pug-indent](https://eslint.vuejs.org/rules/pug-indent.html) | enforce consistent indentation in <template lang="pug"> | :wrench: |
 
 ## Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead) <badge text="for Vue.js 2.x" vertical="middle" type="warn">for Vue.js 2.x</badge>
 
@@ -340,6 +342,7 @@ For example:
 | 💤 | [vue/block-lang](https://eslint.vuejs.org/rules/block-lang.html) | disallow use other than available `lang` |  |
 | 🎁 | [vue/block-tag-newline](https://eslint.vuejs.org/rules/block-tag-newline.html) | enforce line breaks after opening and before closing block-level tags | :wrench: |
 | 💤 | [vue/component-api-style](https://eslint.vuejs.org/rules/component-api-style.html) | enforce component API style |  |
+| 🚧 | [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing.html) | enforce specific casing for the component naming style in template | :wrench: |
 | 💤 | [vue/component-options-name-casing](https://eslint.vuejs.org/rules/component-options-name-casing.html) | enforce the casing of component name in `components` options | :wrench::bulb: |
 | 🎁 | [vue/custom-event-name-casing](https://eslint.vuejs.org/rules/custom-event-name-casing.html) | enforce specific casing for custom event name |  |
 | 🚧 | [vue/define-emits-declaration](https://eslint.vuejs.org/rules/define-emits-declaration.html) | enforce declaration style of `defineEmits` |  |
@@ -396,7 +399,6 @@ For example:
 | 🚧 | [vue/static-class-names-order](https://eslint.vuejs.org/rules/static-class-names-order.html) | enforce static class names order | :wrench: |
 | 🚧 | [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style.html) | enforce `v-for` directive's delimiter style | :wrench: |
 | 🚧 | [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style.html) | enforce writing style for handlers in `v-on` directives | :wrench: |
-| 🤝 | [vue-pug/component-name-in-template-casing](./component-name-in-template-casing.md) | enforce specific casing for the component naming style in template | :wrench: |
 
 ### Extension Rules
 
@@ -404,42 +406,19 @@ The following rules extend the rules provided by ESLint itself and apply them to
 
 |    | Rule ID | Description |    |
 |:---|:--------|:------------|:---|
-| 🚧 | [vue/array-bracket-newline](https://eslint.vuejs.org/rules/array-bracket-newline.html) | enforce linebreaks after opening and before closing array brackets in `<template>` | :wrench: |
-| 🎁 | [vue/array-bracket-spacing](https://eslint.vuejs.org/rules/array-bracket-spacing.html) | enforce consistent spacing inside array brackets in `<template>` | :wrench: |
-| 🎁 | [vue/arrow-spacing](https://eslint.vuejs.org/rules/arrow-spacing.html) | enforce consistent spacing before and after the arrow in arrow functions in `<template>` | :wrench: |
-| 🎁 | [vue/block-spacing](https://eslint.vuejs.org/rules/block-spacing.html) | disallow or enforce spaces inside of blocks after opening block and before closing block in `<template>` | :wrench: |
-| 🎁 | [vue/brace-style](https://eslint.vuejs.org/rules/brace-style.html) | enforce consistent brace style for blocks in `<template>` | :wrench: |
-| 🎁 | [vue/camelcase](https://eslint.vuejs.org/rules/camelcase.html) | enforce camelcase naming convention in `<template>` |  |
-| 🎁 | [vue/comma-dangle](https://eslint.vuejs.org/rules/comma-dangle.html) | require or disallow trailing commas in `<template>` | :wrench: |
-| 🎁 | [vue/comma-spacing](https://eslint.vuejs.org/rules/comma-spacing.html) | enforce consistent spacing before and after commas in `<template>` | :wrench: |
-| 🎁 | [vue/comma-style](https://eslint.vuejs.org/rules/comma-style.html) | enforce consistent comma style in `<template>` | :wrench: |
-| 🎁 | [vue/dot-location](https://eslint.vuejs.org/rules/dot-location.html) | enforce consistent newlines before and after dots in `<template>` | :wrench: |
-| 🎁 | [vue/dot-notation](https://eslint.vuejs.org/rules/dot-notation.html) | enforce dot notation whenever possible in `<template>` | :wrench: |
-| 🎁 | [vue/eqeqeq](https://eslint.vuejs.org/rules/eqeqeq.html) | require the use of `===` and `!==` in `<template>` | :wrench: |
-| 🎁 | [vue/func-call-spacing](https://eslint.vuejs.org/rules/func-call-spacing.html) | require or disallow spacing between function identifiers and their invocations in `<template>` | :wrench: |
-| 🎁 | [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing.html) | enforce consistent spacing between keys and values in object literal properties in `<template>` | :wrench: |
-| 🎁 | [vue/keyword-spacing](https://eslint.vuejs.org/rules/keyword-spacing.html) | enforce consistent spacing before and after keywords in `<template>` | :wrench: |
+| 🎁 | [vue/camelcase](https://eslint.vuejs.org/rules/camelcase.html) | Enforce camelcase naming convention in `<template>` |  |
+| 🎁 | [vue/dot-notation](https://eslint.vuejs.org/rules/dot-notation.html) | Enforce dot notation whenever possible in `<template>` | :wrench: |
+| 🎁 | [vue/eqeqeq](https://eslint.vuejs.org/rules/eqeqeq.html) | Require the use of `===` and `!==` in `<template>` | :wrench: |
 | 🚧 | [vue/max-len](https://eslint.vuejs.org/rules/max-len.html) | enforce a maximum line length in `.vue` files |  |
-| 🚧 | [vue/multiline-ternary](https://eslint.vuejs.org/rules/multiline-ternary.html) | enforce newlines between operands of ternary expressions in `<template>` | :wrench: |
-| 🎁 | [vue/no-constant-condition](https://eslint.vuejs.org/rules/no-constant-condition.html) | disallow constant expressions in conditions in `<template>` |  |
-| 🎁 | [vue/no-empty-pattern](https://eslint.vuejs.org/rules/no-empty-pattern.html) | disallow empty destructuring patterns in `<template>` |  |
-| 🎁 | [vue/no-extra-parens](https://eslint.vuejs.org/rules/no-extra-parens.html) | disallow unnecessary parentheses in `<template>` | :wrench: |
+| 🎁 | [vue/no-constant-condition](https://eslint.vuejs.org/rules/no-constant-condition.html) | Disallow constant expressions in conditions in `<template>` |  |
+| 🎁 | [vue/no-empty-pattern](https://eslint.vuejs.org/rules/no-empty-pattern.html) | Disallow empty destructuring patterns in `<template>` |  |
 | 🚧 | [vue/no-irregular-whitespace](https://eslint.vuejs.org/rules/no-irregular-whitespace.html) | disallow irregular whitespace in `.vue` files |  |
-| 🎁 | [vue/no-loss-of-precision](https://eslint.vuejs.org/rules/no-loss-of-precision.html) | disallow literal numbers that lose precision in `<template>` |  |
-| 🎁 | [vue/no-restricted-syntax](https://eslint.vuejs.org/rules/no-restricted-syntax.html) | disallow specified syntax in `<template>` |  |
-| 🚧 | [vue/no-sparse-arrays](https://eslint.vuejs.org/rules/no-sparse-arrays.html) | disallow sparse arrays in `<template>` |  |
-| 🚧 | [vue/no-useless-concat](https://eslint.vuejs.org/rules/no-useless-concat.html) | disallow unnecessary concatenation of literals or template literals in `<template>` |  |
-| 🚧 | [vue/object-curly-newline](https://eslint.vuejs.org/rules/object-curly-newline.html) | enforce consistent line breaks after opening and before closing braces in `<template>` | :wrench: |
-| 🚧 | [vue/object-curly-spacing](https://eslint.vuejs.org/rules/object-curly-spacing.html) | enforce consistent spacing inside braces in `<template>` | :wrench: |
-| 🚧 | [vue/object-property-newline](https://eslint.vuejs.org/rules/object-property-newline.html) | enforce placing object properties on separate lines in `<template>` | :wrench: |
-| 🚧 | [vue/object-shorthand](https://eslint.vuejs.org/rules/object-shorthand.html) | require or disallow method and property shorthand syntax for object literals in `<template>` | :wrench: |
-| 🚧 | [vue/operator-linebreak](https://eslint.vuejs.org/rules/operator-linebreak.html) | enforce consistent linebreak style for operators in `<template>` | :wrench: |
-| 🚧 | [vue/prefer-template](https://eslint.vuejs.org/rules/prefer-template.html) | require template literals instead of string concatenation in `<template>` | :wrench: |
-| 🚧 | [vue/quote-props](https://eslint.vuejs.org/rules/quote-props.html) | require quotes around object literal property names in `<template>` | :wrench: |
-| 🚧 | [vue/space-in-parens](https://eslint.vuejs.org/rules/space-in-parens.html) | enforce consistent spacing inside parentheses in `<template>` | :wrench: |
-| 🚧 | [vue/space-infix-ops](https://eslint.vuejs.org/rules/space-infix-ops.html) | require spacing around infix operators in `<template>` | :wrench: |
-| 🚧 | [vue/space-unary-ops](https://eslint.vuejs.org/rules/space-unary-ops.html) | enforce consistent spacing before or after unary operators in `<template>` | :wrench: |
-| 🚧 | [vue/template-curly-spacing](https://eslint.vuejs.org/rules/template-curly-spacing.html) | require or disallow spacing around embedded expressions of template strings in `<template>` | :wrench: |
+| 🎁 | [vue/no-loss-of-precision](https://eslint.vuejs.org/rules/no-loss-of-precision.html) | Disallow literal numbers that lose precision in `<template>` |  |
+| 🎁 | [vue/no-restricted-syntax](https://eslint.vuejs.org/rules/no-restricted-syntax.html) | Disallow specified syntax in `<template>` |  |
+| 🚧 | [vue/no-sparse-arrays](https://eslint.vuejs.org/rules/no-sparse-arrays.html) | Disallow sparse arrays in `<template>` |  |
+| 🚧 | [vue/no-useless-concat](https://eslint.vuejs.org/rules/no-useless-concat.html) | Disallow unnecessary concatenation of literals or template literals in `<template>` |  |
+| 🚧 | [vue/object-shorthand](https://eslint.vuejs.org/rules/object-shorthand.html) | Require or disallow method and property shorthand syntax for object literals in `<template>` | :wrench: |
+| 🚧 | [vue/prefer-template](https://eslint.vuejs.org/rules/prefer-template.html) | Require template literals instead of string concatenation in `<template>` | :wrench: |
 
 ## Deprecated
 
@@ -448,6 +427,29 @@ The following rules extend the rules provided by ESLint itself and apply them to
 
 | Rule ID | Replaced by |
 |:--------|:------------|
+| [vue/array-bracket-newline](./array-bracket-newline.md) | (no replacement) |
+| [vue/array-bracket-spacing](./array-bracket-spacing.md) | (no replacement) |
+| [vue/arrow-spacing](./arrow-spacing.md) | (no replacement) |
+| [vue/block-spacing](./block-spacing.md) | (no replacement) |
+| [vue/brace-style](./brace-style.md) | (no replacement) |
+| [vue/comma-dangle](./comma-dangle.md) | (no replacement) |
+| [vue/comma-spacing](./comma-spacing.md) | (no replacement) |
+| [vue/comma-style](./comma-style.md) | (no replacement) |
+| [vue/dot-location](./dot-location.md) | (no replacement) |
+| [vue/func-call-spacing](./func-call-spacing.md) | (no replacement) |
+| [vue/key-spacing](./key-spacing.md) | (no replacement) |
+| [vue/keyword-spacing](./keyword-spacing.md) | (no replacement) |
+| [vue/multiline-ternary](./multiline-ternary.md) | (no replacement) |
+| [vue/no-extra-parens](./no-extra-parens.md) | (no replacement) |
 | [vue/no-invalid-model-keys](./no-invalid-model-keys.md) | [vue/valid-model-definition](./valid-model-definition.md) |
+| [vue/object-curly-newline](./object-curly-newline.md) | (no replacement) |
+| [vue/object-curly-spacing](./object-curly-spacing.md) | (no replacement) |
+| [vue/object-property-newline](./object-property-newline.md) | (no replacement) |
+| [vue/operator-linebreak](./operator-linebreak.md) | (no replacement) |
+| [vue/quote-props](./quote-props.md) | (no replacement) |
 | [vue/script-setup-uses-vars](./script-setup-uses-vars.md) | (no replacement) |
+| [vue/space-in-parens](./space-in-parens.md) | (no replacement) |
+| [vue/space-infix-ops](./space-infix-ops.md) | (no replacement) |
+| [vue/space-unary-ops](./space-unary-ops.md) | (no replacement) |
+| [vue/template-curly-spacing](./template-curly-spacing.md) | (no replacement) |
 | [vue/v-on-function-call](./v-on-function-call.md) | [vue/v-on-handler-style](./v-on-handler-style.md) |

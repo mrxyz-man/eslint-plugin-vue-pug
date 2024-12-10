@@ -27,7 +27,7 @@ const content = `/*
 module.exports = {
   rules: {
     ${rules
-      .filter((rule) => rule.ruleId.startsWith('vue-pug/'))
+      .filter((rule) => rule.ruleId.startsWith('vue-pug-more/'))
       .map((rule) => `'${rule.name}': require('./rules/${rule.name}')`)
       .join(',\n')}
   },
