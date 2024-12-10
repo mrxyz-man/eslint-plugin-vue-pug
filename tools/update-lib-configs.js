@@ -33,7 +33,8 @@ const disableUpstreamRules = [
   'html-self-closing',
   'html-end-tags',
   'multiline-html-element-content-newline',
-  'singleline-html-element-content-newline'
+  'singleline-html-element-content-newline',
+  'html-quotes'
 ]
 
 function formatRules(rules, categoryId) {
