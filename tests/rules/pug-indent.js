@@ -4,8 +4,8 @@
  */
 'use strict'
 
-const rule = require('../../lib/rules/pug-indent')
 const RuleTester = require('eslint').RuleTester
+const rule = require('../../lib/rules/pug-indent')
 
 const ruleTester = new RuleTester({
   parser: require.resolve('vue-eslint-parser'),
@@ -20,30 +20,10 @@ ruleTester.run('pug-indent', rule, {
 <template lang="pug">
   div
     p Hello
-    p
-      | World
-    v-row(
-      cols="12"
-      md="6"
-    )
-</template>
-      `
-    },
-    {
-      filename: 'test.vue',
-      code: `
-<template lang="pug">
-\tdiv
-\t\tp Hello
-\t\tp
-\t\t\t| World
-\t\tv-row(
-\t\t\tcols="12"
-\t\t\tmd="6"
-\t\t)
+    p World
 </template>
       `,
-      options: ['tab']
+      options: [{ baseIndent: 1 }]
     }
   ],
   invalid: [
@@ -51,33 +31,22 @@ ruleTester.run('pug-indent', rule, {
       filename: 'test.vue',
       code: `
 <template lang="pug">
-  div
-   p Hello
-     p
-      | World
-    v-row(
-     cols="12"
-       md="6"
-    )
+div
+  p Hello
+p World
 </template>
       `,
       output: `
 <template lang="pug">
   div
     p Hello
-    p
-      | World
-    v-row(
-      cols="12"
-      md="6"
-    )
+  p World
 </template>
       `,
+      options: [{ baseIndent: 1 }],
       errors: [
-        { message: 'Expected indentation of 4 spaces but found 3.', line: 4 },
-        { message: 'Expected indentation of 4 spaces but found 5.', line: 5 },
-        { message: 'Expected indentation of 6 spaces but found 5.', line: 8 },
-        { message: 'Expected indentation of 6 spaces but found 7.', line: 9 }
+        { message: 'Expected indentation of at least 2 spaces', line: 3 },
+        { message: 'Expected indentation of at least 2 spaces', line: 5 }
       ]
     }
   ]
