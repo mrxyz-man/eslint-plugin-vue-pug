@@ -18,7 +18,23 @@ This rule enforces the usage of double quotes or single quotes in HTML attribute
 
 This rule aims to enforce a consistent use of quotes in HTML attributes.
 
-<eslint-code-block fix :rules="{'vue/html-quotes': ['error']}">
+## :wrench: Options
+
+```js
+{
+  "vue/html-quotes": ["error", "double" | "single", {
+    "avoidEscape": boolean,
+    "ignoreBackticks": boolean
+  }]
+}
+```
+
+- `"double"` (default) ... requires double quotes
+- `"single"` ... requires single quotes
+- `avoidEscape` ... if `true`, allows strings to use single-quotes or double-quotes so long as the string contains a quote that would have to be escaped otherwise. Default is `false`.
+- `ignoreBackticks` ... if `true`, ignores backtick quotes in attributes. This is useful for template literals and multi-line attributes. Default is `false`.
+
+## double
 
 ```vue
 <template>
@@ -28,8 +44,58 @@ This rule aims to enforce a consistent use of quotes in HTML attributes.
   <!-- ✗ BAD -->
   <img src='path/to/image.png'>
 </template>
+```
 
-## :mag: Implementation
+## single
 
-- [Rule source](https://github.com/rashfael/eslint-plugin-vue-pug/blob/main/lib/rules/html-quotes-pug.js)
-- [Test source](https://github.com/rashfael/eslint-plugin-vue-pug/blob/main/tests/lib/rules/html-quotes-pug.js)
+```vue
+<template>
+  <!-- ✓ GOOD -->
+  <img src='path/to/image.png'>
+
+  <!-- ✗ BAD -->
+  <img src="path/to/image.png">
+</template>
+```
+
+## avoidEscape
+
+```vue
+<template>
+  <!-- ✓ GOOD -->
+  <img src="path/to/image.png">
+  <img src='a "double" quoted inside'>
+
+  <!-- ✗ BAD -->
+  <img src='path/to/image.png'>
+</template>
+```
+
+## ignoreBackticks
+
+```vue
+<template>
+  <!-- ✓ GOOD -->
+  <img src="path/to/image.png">
+  <div v-slot=`{ item }`></div>
+  <div :class="`${active ? 'active' : ''}`"></div>
+  <server-data
+    ref="list"
+    v-model="items"
+    :method="method"
+    :serialize-data="serializeData"
+    v-slot=`{
+      query,
+      hasMore,
+      loading,
+      queryList,
+      pagination,
+      isInitialized,
+      loadMoreItems,
+    }`
+  ></server-data>
+
+  <!-- ✗ BAD -->
+  <img src='path/to/image.png'>
+</template>
+```
