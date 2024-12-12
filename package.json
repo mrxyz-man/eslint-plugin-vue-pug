@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "pug-lexer": "^5.0.1",
+    "pug-parser": "^6.0.0",
     "vue-eslint-parser-template-tokenizer-pug": "^0.4.11"
   },
   "peerDependencies": {

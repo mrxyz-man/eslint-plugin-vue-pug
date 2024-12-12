@@ -18,12 +18,47 @@ ruleTester.run('pug-indent', rule, {
       filename: 'test.vue',
       code: `
 <template lang="pug">
+div
+  p Hello
+  p World
+</template>
+      `,
+      options: [2]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
   div
     p Hello
     p World
 </template>
       `,
-      options: [{ baseIndent: 1 }]
+      options: [2, { baseIndent: 1 }]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+    p Hello
+    p World
+</template>
+      `,
+      options: [4]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+  p Hello
+  if condition
+    p Conditional
+  p World
+</template>
+      `,
+      options: [2]
     }
   ],
   invalid: [
@@ -32,21 +67,109 @@ ruleTester.run('pug-indent', rule, {
       code: `
 <template lang="pug">
 div
+   p Hello
+ p World
+</template>
+      `,
+      output: `
+<template lang="pug">
+div
   p Hello
-p World
+  p World
+</template>
+      `,
+      options: [2],
+      errors: [
+        {
+          message: 'Expected indentation of 2 spaces but found 3.',
+          line: 4
+        },
+        {
+          message: 'Expected indentation of 2 spaces but found 1.',
+          line: 5
+        }
+      ]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+  p Hello
+    p Nested
+   p Misaligned
+</template>
+      `,
+      output: `
+<template lang="pug">
+div
+  p Hello
+    p Nested
+  p Misaligned
+</template>
+      `,
+      options: [2],
+      errors: [
+        {
+          message: 'Expected indentation of 2 spaces but found 3.',
+          line: 6
+        }
+      ]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+    p Hello
+  p World
+</template>
+      `,
+      output: `
+<template lang="pug">
+div
+  p Hello
+  p World
+</template>
+      `,
+      options: [2],
+      errors: [
+        {
+          message: 'Expected indentation of 2 spaces but found 4.',
+          line: 4
+        }
+      ]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+  p Hello
+ p World
 </template>
       `,
       output: `
 <template lang="pug">
   div
     p Hello
-  p World
+    p World
 </template>
       `,
-      options: [{ baseIndent: 1 }],
+      options: [2, { baseIndent: 1 }],
       errors: [
-        { message: 'Expected indentation of at least 2 spaces', line: 3 },
-        { message: 'Expected indentation of at least 2 spaces', line: 5 }
+        {
+          message: 'Expected indentation of 2 spaces but found 0.',
+          line: 3
+        },
+        {
+          message: 'Expected indentation of 4 spaces but found 2.',
+          line: 4
+        },
+        {
+          message: 'Expected indentation of 4 spaces but found 1.',
+          line: 5
+        }
       ]
     }
   ]
