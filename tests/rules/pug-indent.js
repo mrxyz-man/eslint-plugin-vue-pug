@@ -4,12 +4,15 @@
  */
 'use strict'
 
-const RuleTester = require('eslint').RuleTester
+const { RuleTester } = require('eslint')
 const rule = require('../../lib/rules/pug-indent')
 
 const ruleTester = new RuleTester({
   parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2020, sourceType: 'module' }
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module'
+  }
 })
 
 ruleTester.run('pug-indent', rule, {
@@ -21,9 +24,14 @@ ruleTester.run('pug-indent', rule, {
 div
   p Hello
   p World
+  ul
+    li Item 1
+    li Item 2
+  .class-name
+    span Nested content
 </template>
       `,
-      options: [2]
+      options: [{ baseIndent: 0 }]
     },
     {
       filename: 'test.vue',
@@ -32,20 +40,14 @@ div
   div
     p Hello
     p World
+    ul
+      li Item 1
+      li Item 2
+    .class-name
+      span Nested content
 </template>
       `,
-      options: [2, { baseIndent: 1 }]
-    },
-    {
-      filename: 'test.vue',
-      code: `
-<template lang="pug">
-div
-    p Hello
-    p World
-</template>
-      `,
-      options: [4]
+      options: [{ baseIndent: 1 }]
     },
     {
       filename: 'test.vue',
@@ -53,12 +55,28 @@ div
 <template lang="pug">
 div
   p Hello
+  //- Comment
   if condition
-    p Conditional
-  p World
+    p Conditional content
+  else
+    p Alternative content
 </template>
       `,
-      options: [2]
+      options: [{ baseIndent: 0 }]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+  p Hello
+  = variable
+  - const x = 5
+  each item in items
+    li= item
+</template>
+      `,
+      options: [{ baseIndent: 0 }]
     }
   ],
   invalid: [
@@ -67,8 +85,13 @@ div
       code: `
 <template lang="pug">
 div
-   p Hello
- p World
+ p Hello
+   p World
+  ul
+      li Item 1
+    li Item 2
+ .class-name
+   span Nested content
 </template>
       `,
       output: `
@@ -76,68 +99,20 @@ div
 div
   p Hello
   p World
+  ul
+    li Item 1
+    li Item 2
+  .class-name
+    span Nested content
 </template>
       `,
-      options: [2],
+      options: [{ baseIndent: 0 }],
       errors: [
-        {
-          message: 'Expected indentation of 2 spaces but found 3.',
-          line: 4
-        },
-        {
-          message: 'Expected indentation of 2 spaces but found 1.',
-          line: 5
-        }
-      ]
-    },
-    {
-      filename: 'test.vue',
-      code: `
-<template lang="pug">
-div
-  p Hello
-    p Nested
-   p Misaligned
-</template>
-      `,
-      output: `
-<template lang="pug">
-div
-  p Hello
-    p Nested
-  p Misaligned
-</template>
-      `,
-      options: [2],
-      errors: [
-        {
-          message: 'Expected indentation of 2 spaces but found 3.',
-          line: 6
-        }
-      ]
-    },
-    {
-      filename: 'test.vue',
-      code: `
-<template lang="pug">
-div
-    p Hello
-  p World
-</template>
-      `,
-      output: `
-<template lang="pug">
-div
-  p Hello
-  p World
-</template>
-      `,
-      options: [2],
-      errors: [
-        {
-          message: 'Expected indentation of 2 spaces but found 4.',
-          line: 4
-        }
+        { message: 'Expected indentation of 2 spaces but found 1.', line: 4 },
+        { message: 'Expected indentation of 2 spaces but found 3.', line: 5 },
+        { message: 'Expected indentation of 4 spaces but found 6.', line: 7 },
+        { message: 'Expected indentation of 2 spaces but found 1.', line: 9 },
+        { message: 'Expected indentation of 4 spaces but found 3.', line: 10 }
       ]
     },
     {
@@ -147,6 +122,11 @@ div
 div
   p Hello
  p World
+   ul
+     li Item 1
+      li Item 2
+  .class-name
+ span Nested content
 </template>
       `,
       output: `
@@ -154,22 +134,82 @@ div
   div
     p Hello
     p World
+    ul
+      li Item 1
+      li Item 2
+    .class-name
+      span Nested content
 </template>
       `,
-      options: [2, { baseIndent: 1 }],
+      options: [{ baseIndent: 1 }],
       errors: [
-        {
-          message: 'Expected indentation of 2 spaces but found 0.',
-          line: 3
-        },
-        {
-          message: 'Expected indentation of 4 spaces but found 2.',
-          line: 4
-        },
-        {
-          message: 'Expected indentation of 4 spaces but found 1.',
-          line: 5
-        }
+        { message: 'Expected indentation of 2 spaces but found 0.', line: 3 },
+        { message: 'Expected indentation of 4 spaces but found 2.', line: 4 },
+        { message: 'Expected indentation of 4 spaces but found 1.', line: 5 },
+        { message: 'Expected indentation of 4 spaces but found 3.', line: 6 },
+        { message: 'Expected indentation of 6 spaces but found 5.', line: 7 },
+        { message: 'Expected indentation of 6 spaces but found 6.', line: 8 },
+        { message: 'Expected indentation of 4 spaces but found 2.', line: 9 },
+        { message: 'Expected indentation of 6 spaces but found 1.', line: 10 }
+      ]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+ if condition
+   p Conditional content
+ else
+  p Alternative content
+</template>
+      `,
+      output: `
+<template lang="pug">
+div
+  if condition
+    p Conditional content
+  else
+    p Alternative content
+</template>
+      `,
+      options: [{ baseIndent: 0 }],
+      errors: [
+        { message: 'Expected indentation of 2 spaces but found 1.', line: 4 },
+        { message: 'Expected indentation of 4 spaces but found 3.', line: 5 },
+        { message: 'Expected indentation of 2 spaces but found 1.', line: 6 },
+        { message: 'Expected indentation of 4 spaces but found 2.', line: 7 }
+      ]
+    },
+    {
+      filename: 'test.vue',
+      code: `
+<template lang="pug">
+div
+ p Hello
+  = variable
+   - const x = 5
+ each item in items
+  li= item
+</template>
+      `,
+      output: `
+<template lang="pug">
+div
+  p Hello
+  = variable
+  - const x = 5
+  each item in items
+    li= item
+</template>
+      `,
+      options: [{ baseIndent: 0 }],
+      errors: [
+        { message: 'Expected indentation of 2 spaces but found 1.', line: 4 },
+        { message: 'Expected indentation of 2 spaces but found 2.', line: 5 },
+        { message: 'Expected indentation of 2 spaces but found 3.', line: 6 },
+        { message: 'Expected indentation of 2 spaces but found 1.', line: 7 },
+        { message: 'Expected indentation of 4 spaces but found 2.', line: 8 }
       ]
     }
   ]
